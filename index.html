@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIDIOS Bridgeway Energy | Renewable Energy Storage Solutions Nigeria</title>
+    <meta name="description" content="Leading provider of lithium battery energy storage solutions for Telecoms, Commerce & Industry, and Residential usage in Nigeria and West Africa.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            /* Color Palette extracted from MHTML */
+            --background: 210 20% 98%;
+            --foreground: 160 30% 12%;
+            --card: 0 0% 100%;
+            --card-foreground: 160 30% 12%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 160 30% 12%;
+            --primary: 145 45% 22%; /* Deep Green */
+            --primary-foreground: 0 0% 100%;
+            --secondary: 150 20% 90%;
+            --secondary-foreground: 160 30% 12%;
+            --muted: 210 40% 96.1%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --accent: 150 30% 90%;
+            --accent-foreground: 160 30% 12%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 214.3 31.8% 91.4%;
+            --input: 214.3 31.8% 91.4%;
+            --ring: 145 45% 22%;
+            --radius: 0.5rem;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Glassmorphism for Navbar */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .shadow-soft {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .shadow-strong {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground antialiased">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-effect transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20 md:h-24">
+                <a href="#" class="flex items-center">
+                    <div class="relative">
+                        <img src="https://preview--countdown-forge-2026.lovable.app/assets/abe-logo-B1GFUEee.jpeg" 
+                             alt="Aidios Bridgeway Energy" 
+                             class="h-16 md:h-20 w-auto" 
+                             style="mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);">
+                    </div>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">About</a>
+                    <a href="#solutions" class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Solutions</a>
+                    <a href="#features" class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Features</a>
+                    <a href="#faq" class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">FAQ</a>
+                    <a href="#contact" class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Contact</a>
+                </div>
+
+                <div class="hidden md:flex items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <a href="https://wa.me/2349063671339" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-primary">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                        </a>
+                        <a href="mailto:energy@aidiosbridgeway.com" class="p-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-primary">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                    <a href="#contact">
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft hover:shadow-medium h-9 rounded-md px-4">
+                            Connect
+                        </button>
+                    </a>
+                </div>
+
+                <button class="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <i data-lucide="menu" class="w-6 h-6 text-foreground"></i>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden overflow-hidden transition-all duration-300 pb-4">
+                <div class="flex flex-col gap-2">
+                    <a href="#about" class="py-3 px-4 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-secondary rounded-lg transition-colors">About</a>
+                    <a href="#solutions" class="py-3 px-4 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-secondary rounded-lg transition-colors">Solutions</a>
+                    <a href="#features" class="py-3 px-4 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-secondary rounded-lg transition-colors">Features</a>
+                    <a href="#faq" class="py-3 px-4 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-secondary rounded-lg transition-colors">FAQ</a>
+                    <a href="#contact" class="py-3 px-4 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-secondary rounded-lg transition-colors">Contact</a>
+                    <a href="#contact">
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft h-10 px-5 py-2 w-full mt-2">
+                            Connect
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://preview--countdown-forge-2026.lovable.app/assets/hero-cityscape-CCmKNy7H.jpeg');">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 container mx-auto px-4 py-32">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-primary-foreground leading-tight mb-6">
+                    Stay Powered Up
+                </h1>
+                <p class="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mb-8">
+                    Aidios Bridgeway is dedicated to providing innovative Renewable Energy Storage solutions for business and consumers across Nigeria and West Africa. Join us in our mission to create a greener and more sustainable future in Sub-saharan Africa.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#about">
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold border-2 border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/50 h-12 rounded-lg px-8 text-base group transition-all duration-300">
+                            Explore More <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </a>
+                    <a href="#contact">
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold bg-primary text-primary-foreground hover:bg-primary/90 shadow-medium hover:shadow-strong hover:-translate-y-0.5 h-12 rounded-lg px-8 text-base transition-all duration-300">
+                            Get Started
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 rounded-full border-2 border-primary-foreground/30 flex items-start justify-center p-2">
+                <div class="w-1 h-2 bg-primary-foreground/50 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-12 md:py-16 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-strong">
+                        <img src="https://preview--countdown-forge-2026.lovable.app/assets/office-building-CQGwDMNi.jpeg" alt="Aidios Bridgeway Energy Office" class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 md:right-6 bg-card rounded-xl p-6 shadow-medium border border-border max-w-xs">
+                        <p class="text-3xl font-heading font-bold text-primary mb-1">10+</p>
+                        <p class="text-sm text-muted-foreground">Years of Experience</p>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">Who We Are</h2>
+                    <p class="text-muted-foreground mb-6 leading-relaxed">
+                        Aidios Bridgeway is a leading provider of renewable energy solutions based in Nigeria, West Africa. Our mission is to empower businesses and consumers to achieve transition to sustainable eco-friendly energy choices by offering top-notch renewable energy solutions delivered with first-class services.
+                    </p>
+                    <p class="text-muted-foreground mb-8 leading-relaxed">
+                        With a team of experienced professionals and a commitment to quality, we ensure every project is executed with precision and care. Our innovative solutions address the following:
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"></i>
+                            <span class="text-foreground">Impact of grid related challenges</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"></i>
+                            <span class="text-foreground">Offer cost savings and improves efficiency</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"></i>
+                            <span class="text-foreground">Helps in reducing carbon footprint</span>
+                        </li>
+                    </ul>
+                    <p class="text-muted-foreground leading-relaxed">
+                        At Aidios Bridgeway, we believe in a greener future and are dedicated to making renewable energy accessible to and for all. Join us in our journey towards sustainability and make a positive impact on our environment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-16 bg-gradient-to-br from-primary via-primary to-accent relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-primary-foreground rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary-foreground rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 bg-primary-foreground/10 rounded-full px-4 py-2 mb-6">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-primary-foreground"></i>
+                    <span class="text-sm text-primary-foreground/90">The Future of Energy</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary-foreground mb-6">Energy Security</h2>
+                <p class="text-lg md:text-xl text-primary-foreground/85 mb-8 leading-relaxed">
+                    Welcome to the future of energy storage solutions! Our cutting-edge lithium battery technology is here to revolutionize availability and affordability across the Telecoms, Commerce & Industry (C&I), and Residential sectors.
+                </p>
+                <p class="text-lg text-primary-foreground/80 mb-10">
+                    Aidios BridgeWay doesn't just provide energy storage solutions; we create power experiences. Say goodbye to traditional energy woes and embrace a new era of Quality, Reliability, Efficiency and Sustainability.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact">
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold border-2 border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/50 h-12 rounded-lg px-8 text-base group transition-all">
+                            Get Started <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </a>
+                    <a href="#solutions">
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold shadow-soft hover:shadow-medium h-12 rounded-lg px-8 text-base bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-all">
+                            Learn More
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="py-12 md:py-16 bg-secondary/30">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">Solutions</h2>
+                <p class="text-muted-foreground max-w-2xl mx-auto">Comprehensive energy storage solutions for every sector</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-card rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 border border-border/50">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                        <i data-lucide="radio" class="w-7 h-7 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-foreground mb-4">Telecom Titan</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        Advanced engineered Lithium-ion Telecoms UPS systems. Rack mountable and uniquely able to integrate with and/or replace existing lead acid battery solutions in cell tower infrastructure. Unleash the power of Lithium battery energy storage for unstoppable telecom performance.
+                    </p>
+                </div>
+                <div class="bg-card rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 border border-border/50">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                        <i data-lucide="building-2" class="w-7 h-7 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-foreground mb-4">C&I Champion</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        Modular cabinets and containerised solutions able to support Commercial and Industrial (C&I) Areas, Factories, EVC Stations, Grid Application and Renewable pairing. Elevate your business with cutting-edge energy solutions tailored for commercial success.
+                    </p>
+                </div>
+                <div class="bg-card rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 border border-border/50">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                        <i data-lucide="home" class="w-7 h-7 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-foreground mb-4">Residential Resilience</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        All-In-One systems with Lithium-ion battery and integrated inverter for residential home usage. Transform your home into a fortress of energy independence with our residential packages.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-2xl overflow-hidden shadow-medium">
+                <img src="https://preview--countdown-forge-2026.lovable.app/assets/products-usecases-CwfRVMYf.jpeg" alt="AIDIOS Energy Solutions" class="w-full h-auto object-cover">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-12 md:py-16 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group relative rounded-2xl overflow-hidden shadow-soft hover:shadow-strong transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=400&h=300&fit=crop" alt="Efficient Energy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent"></div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <div class="w-10 h-10 rounded-lg bg-primary/90 flex items-center justify-center mb-3">
+                            <i data-lucide="gauge" class="w-5 h-5 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-lg font-heading font-bold text-primary-foreground mb-2">Efficient Energy</h3>
+                        <p class="text-sm text-primary-foreground/80">Optimize energy usage with smart Lithium battery solutions.</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden shadow-soft hover:shadow-strong transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1481966115753-963394378f23?w=400&h=300&fit=crop" alt="Reliable Power" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent"></div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <div class="w-10 h-10 rounded-lg bg-primary/90 flex items-center justify-center mb-3">
+                            <i data-lucide="shield" class="w-5 h-5 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-lg font-heading font-bold text-primary-foreground mb-2">Reliable Power</h3>
+                        <p class="text-sm text-primary-foreground/80">Ensure uninterrupted power supply with cutting-edge technology.</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden shadow-soft hover:shadow-strong transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&h=300&fit=crop" alt="Versatile Solutions" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent"></div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <div class="w-10 h-10 rounded-lg bg-primary/90 flex items-center justify-center mb-3">
+                            <i data-lucide="layers" class="w-5 h-5 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-lg font-heading font-bold text-primary-foreground mb-2">Versatile Solutions</h3>
+                        <p class="text-sm text-primary-foreground/80">Adapt to diverse energy needs with flexible storage options.</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden shadow-soft hover:shadow-strong transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1610028290816-5d937a395a49?w=400&h=300&fit=crop" alt="Future-Proofing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent"></div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <div class="w-10 h-10 rounded-lg bg-primary/90 flex items-center justify-center mb-3">
+                            <i data-lucide="rocket" class="w-5 h-5 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-lg font-heading font-bold text-primary-foreground mb-2">Future-Proofing</h3>
+                        <p class="text-sm text-primary-foreground/80">Stay ahead with scalable energy solutions for tomorrow's challenges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 md:py-14 bg-secondary/20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">Technology Partners</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+                <div class="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+                    <img src="https://aidios.page.gd/aidios/aidiosenergy/2024/abweb2024/assets/images/vestel.gif" alt="Vestel" class="max-h-16 w-auto object-contain">
+                </div>
+                <div class="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+                    <img src="https://aidios.page.gd/aidios/aidiosenergy/2024/abweb2024/assets/images/sigenergy-251x55.png" alt="Sigenergy" class="max-h-16 w-auto object-contain">
+                </div>
+                <div class="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+                    <img src="https://aidios.page.gd/aidios/aidiosenergy/2024/abweb2024/assets/images/victron-energy-227x68.png" alt="Victron Energy" class="max-h-16 w-auto object-contain">
+                </div>
+                <div class="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+                    <img src="https://aidios.page.gd/aidios/aidiosenergy/2024/abweb2024/assets/images/topband-146x47.png" alt="Topband" class="max-h-16 w-auto object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-12 md:py-16 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">FAQ</h2>
+                <p class="text-muted-foreground max-w-2xl mx-auto">Frequently asked questions about our services</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-card rounded-xl border border-border/50 px-6 shadow-soft group">
+                    <details class="w-full">
+                        <summary class="flex items-center justify-between py-6 font-heading font-semibold text-left cursor-pointer list-none">
+                            What services do you offer?
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="pb-6 text-muted-foreground">
+                            We sell Energy Storage Systems (ESS) for B2C/B2B and offer a suite of services from Renewable Energy Consulting, Project Assessment & Scoping, Installation, Testing, Commissioning, Support and Maintenance.
+                        </div>
+                    </details>
+                </div>
+                <div class="bg-card rounded-xl border border-border/50 px-6 shadow-soft group">
+                    <details class="w-full">
+                        <summary class="flex items-center justify-between py-6 font-heading font-semibold text-left cursor-pointer list-none">
+                            How do I get started with my project needs?
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="pb-6 text-muted-foreground">
+                            Simply contact us to schedule a consultation. We'll evaluate your energy requirements and recommend solutions to improve your scenario.
+                        </div>
+                    </details>
+                </div>
+                <div class="bg-card rounded-xl border border-border/50 px-6 shadow-soft group">
+                    <details class="w-full">
+                        <summary class="flex items-center justify-between py-6 font-heading font-semibold text-left cursor-pointer list-none">
+                            Do you offer maintenance services?
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="pb-6 text-muted-foreground">
+                            Yes, indeed we offer quality after-sales care, maintenance, and support services for all our installations.
+                        </div>
+                    </details>
+                </div>
+                <div class="bg-card rounded-xl border border-border/50 px-6 shadow-soft group">
+                    <details class="w-full">
+                        <summary class="flex items-center justify-between py-6 font-heading font-semibold text-left cursor-pointer list-none">
+                            Where are you located?
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="pb-6 text-muted-foreground">
+                            Aidios Bridgeway is an African company located in Nigeria, West Africa with plans to expand our service coverage across Sub-Saharan African region.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-12 md:py-16 bg-secondary/30">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">Get in Touch</h2>
+                <p class="text-muted-foreground max-w-2xl mx-auto">For any enquiries regarding our BESS solutions or Consulting/Project services, please reach out to us directly via our contact details below.</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto space-y-4">
+                <div class="flex items-start gap-4 bg-card rounded-xl p-5 shadow-soft border border-border/50">
+                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-muted-foreground mb-1">Address</p>
+                        <p class="text-foreground">Plot 826 Ado-Ekiti Close, Area 11 Garki, Abuja, Nigeria, West Africa</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 bg-card rounded-xl p-5 shadow-soft border border-border/50">
+                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="mail" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-muted-foreground mb-1">Email</p>
+                        <a href="mailto:energy@aidiosbridgeway.com" class="text-foreground hover:text-primary transition-colors">energy@aidiosbridgeway.com</a>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 bg-card rounded-xl p-5 shadow-soft border border-border/50">
+                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="phone" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-muted-foreground mb-1">Phone (WhatsApp)</p>
+                        <a href="https://wa.me/2349063671339" class="text-foreground hover:text-primary transition-colors">
+                            +234 906 367 1339 / +234 806 538 1933
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-sm text-muted-foreground text-center mt-8">Working Hours: Mon-Fri: 9am-6pm</p>
+        </div>
+    </section>
+
+    <footer class="py-6 bg-primary text-primary-foreground">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="relative">
+                    <img src="https://preview--countdown-forge-2026.lovable.app/assets/abe-logo-B1GFUEee.jpeg" alt="Aidios Bridgeway Energy" class="h-16 md:h-20 w-auto bg-white/90 rounded px-2 py-1" style="mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);">
+                </div>
+                <p class="text-sm opacity-80">&copy; 2026 Aidios BridgeWay Energy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
