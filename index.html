@@ -216,8 +216,8 @@
     position: fixed;
     right: 18px;
     bottom: 96px;
-    width: min(380px, calc(100vw - 36px));
-    height: 560px;
+    width: min(480px, calc(100vw - 36px));
+    height: 690px;
     max-height: calc(100vh - 140px);
     border-radius: var(--aeb-radius);
     background: rgba(11,18,32,0.92);
@@ -260,6 +260,18 @@
     color: var(--aeb-muted);
     font-size: 12px;
     margin-top: 2px;
+  }
+
+  #aidios-energybot-end {
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.06);
+    color: var(--aeb-text);
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
   }
 
   #aidios-energybot-close {
@@ -390,6 +402,7 @@
       <strong>AidiosEnergyBot</strong>
       <span>Available 24/7 • Renewable Energy Storage (ESS/BESS)</span>
     </div>
+    <button id="aidios-energybot-end" type="button" aria-label="End Chat">End Chat</button>
     <button id="aidios-energybot-close" type="button" aria-label="Close">×</button>
   </div>
 
@@ -406,7 +419,7 @@
 (function() {
   // Configuration: set leadEndpoint to your Cloudflare Worker endpoint, e.g. https://your-worker.workers.dev/api/leads
   window.AIDIOS_ENERGYBOT_CONFIG = window.AIDIOS_ENERGYBOT_CONFIG || {
-    leadEndpoint: "https://aidios-energybot-api.abenergy.workers.dev", // optional
+    leadEndpoint: "https://aidios-energybot-api.abenergy.workers.dev/api/leads", // optional
   };
 
   const KB = {"company": "Aidios Bridgeway is a leading provider of renewable energy solutions based in Nigeria, West Africa. The mission is to empower businesses and consumers to transition to sustainable eco\u2011friendly energy choices.", "solutions": [{"title": "Telecom Titan", "text": "Advanced engineered Lithium\u2011ion Telecoms UPS systems, rack\u2011mountable and designed to integrate with and/or replace existing lead\u2011acid battery solutions in cell tower infrastructure."}, {"title": "C&I Champion", "text": "Modular cabinets and containerised solutions supporting Commercial & Industrial sites, factories, EV charging stations, grid applications and renewable pairing."}, {"title": "Residential Resilience", "text": "All\u2011in\u2011one systems with Lithium\u2011ion battery and integrated inverter for residential home usage."}], "services": "Energy Storage Systems (ESS) sales for B2C/B2B plus services including Renewable Energy Consulting, Project Assessment & Scoping, Installation, Testing, Commissioning, Support and Maintenance for ESS.", "maintenance": "Yes \u2014 operational support and maintenance services are offered for installations.", "location": "Plot 826 Ado\u2011Ekiti Close, Area 11 Garki, Abuja, Nigeria, West Africa.", "email": "energy@aidiosbridgeway.com", "phones": ["+234 906 367 1339", "+234 806 538 1933"], "hours": "Mon\u2013Fri: 9am\u20136pm (team hours). AidiosEnergyBot is available 24/7 on the website.", "start": "Contact Aidios Bridgeway to schedule a consultation; the team evaluates requirements and recommends the right solution."};
@@ -417,6 +430,7 @@
     button: document.getElementById("aidios-energybot-button"),
     panel: document.getElementById("aidios-energybot-panel"),
     close: document.getElementById("aidios-energybot-close"),
+    end: document.getElementById("aidios-energybot-end"),
     messages: document.getElementById("aidios-energybot-messages"),
     actions: document.getElementById("aidios-energybot-actions"),
     text: document.getElementById("aeb-text"),
@@ -462,9 +476,22 @@
     els.panel.style.display = "none";
   }
 
+  function resetChat() {
+    // Clear UI and restart the bot the next time it is opened
+    try { els.messages.innerHTML = ""; } catch (e) {}
+    try { els.actions.innerHTML = ""; } catch (e) {}
+    state.booted = false;
+    state.mode = "home";
+    state.step = null;
+    state.pending = null;
+    state.lead = { name: "", email: "", phone: "", category: "", message: "", contact_preference: "" };
+    state.lastQuestion = "";
+  }
+
   els.button.addEventListener("click", openPanel);
   els.label.addEventListener("click", openPanel);
   els.close.addEventListener("click", closePanel);
+  els.end.addEventListener("click", () => { resetChat(); closePanel(); });
 
   // Autosize textarea
   function autoSize() {
@@ -677,16 +704,9 @@
       page_url: window.location.href
     };
 
-    // Always save locally as a backup
-    try {
-      const key = "aidios_energybot_leads";
-      const existing = JSON.parse(localStorage.getItem(key) || "[]");
-      existing.push({ ...payload, created_at: new Date().toISOString() });
-      localStorage.setItem(key, JSON.stringify(existing).slice(0, 2000000));
-    } catch (e) {}
-
+    // Requirement: ensure all captured data is stored in the backend and emailed.
     if (!endpoint) {
-      return { ok: true, stored: true, emailed: false, lead_id: null, note: "No endpoint configured" };
+      return { ok: false, error: "Lead endpoint is not configured. Set window.AIDIOS_ENERGYBOT_CONFIG.leadEndpoint." };
     }
 
     try {
@@ -696,7 +716,7 @@
         body: JSON.stringify(payload)
       });
       const data = await res.json().catch(() => ({}));
-      return { ok: res.ok, ...data };
+      return { http_ok: res.ok, ...data };
     } catch (e) {
       return { ok: false, error: "Network error while submitting enquiry." };
     }
@@ -708,21 +728,40 @@
 
     const result = await submitLead();
 
+    // Consider it successful only if the backend stored the lead AND the notification email was sent.
+    if (result && result.ok === true && result.stored === true && result.emailed === true) {
+      addBubble(
+        "Received. We will contact you within 1–3 business days via " + state.lead.contact_preference + ".",
+        "bot"
+      );
+      if (result.lead_id) {
+        addBubble("Reference: " + result.lead_id, "bot");
+      }
+
+      setActions([
+        { label: "Ask another question", onClick: () => startQAMode() },
+        { label: "Submit another enquiry", primary: true, onClick: () => startLeadFlow() },
+        { label: "End Chat", onClick: () => { resetChat(); closePanel(); } },
+        { label: "Contact details", onClick: () => showContact() },
+      ]);
+
+      state.mode = "home";
+      state.step = null;
+      return;
+    }
+
     addBubble(
-      "Received. We will contact you within 1–3 business days via " + state.lead.contact_preference + ".",
+      "I could not complete your submission to our backend/email system. Please try again, or use our contact details.",
       "bot"
     );
-
-    if (result && result.lead_id) {
-      addBubble("Reference: " + result.lead_id, "bot");
-    } else if (result && result.ok === false) {
-      addBubble("Note: Your details were saved on this device, but the online submission did not complete. If needed, please contact us using the details above.", "bot");
+    if (result && (result.error || result.detail)) {
+      addBubble("Details: " + (result.error || result.detail), "bot");
     }
 
     setActions([
-      { label: "Ask another question", onClick: () => startQAMode() },
-      { label: "Submit another enquiry", primary: true, onClick: () => startLeadFlow() },
+      { label: "Try again", primary: true, onClick: () => finalizeLead() },
       { label: "Contact details", onClick: () => showContact() },
+      { label: "End Chat", onClick: () => { resetChat(); closePanel(); } },
     ]);
 
     state.mode = "home";
